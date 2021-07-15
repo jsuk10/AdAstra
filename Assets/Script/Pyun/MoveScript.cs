@@ -7,6 +7,8 @@ public class MoveScript : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     string testString = "Test";
+    [SerializeField]
+    Rigidbody2D tb;
 
     void Start()
     {
@@ -16,7 +18,6 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(testString);
-        Debug.Log("Update");
+        tb.AddForce(new Vector2(0,1));
     }
 }
