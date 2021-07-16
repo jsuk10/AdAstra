@@ -549,8 +549,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
-  m_SizeDelta: {x: 1122, y: 0}
+  m_AnchoredPosition: {x: -0.000012456787, y: 0}
+  m_SizeDelta: {x: 1197.7, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &381151023
 MonoBehaviour:
@@ -673,7 +673,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 397521089}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 435583204}
+        m_TargetAssemblyTypeName: ChatAndToGame, Assembly-CSharp
+        m_MethodName: Send
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &397521089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.97402596, g: 1, b: 0, a: 0.8666667}
+  m_Color: {r: 0, g: 0.82809186, b: 1, a: 0.8666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -721,6 +733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435583205}
+  - component: {fileID: 435583206}
   - component: {fileID: 435583204}
   m_Layer: 0
   m_Name: ChatAndToGame
@@ -742,6 +755,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListText: {fileID: 1853089860}
+  ChatText:
+  - {fileID: 2130366130}
+  - {fileID: 1624591261}
+  - {fileID: 1057111507}
+  - {fileID: 1985017932}
+  - {fileID: 657630374}
+  - {fileID: 996922158}
+  - {fileID: 324641444}
+  - {fileID: 141596917}
+  - {fileID: 1539180644}
+  - {fileID: 967036096}
+  - {fileID: 95673620}
+  PV: {fileID: 435583206}
+  ChatInput: {fileID: 21895921}
 --- !u!4 &435583205
 Transform:
   m_ObjectHideFlags: 0
@@ -754,8 +781,30 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &435583206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435583203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &536619501
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,7 +887,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536619504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 435583204}
+        m_TargetAssemblyTypeName: ChatAndToGame, Assembly-CSharp
+        m_MethodName: clickToGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &536619504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,8 +1268,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1758237918}
   m_HandleRect: {fileID: 1758237917}
   m_Direction: 2
-  m_Value: 0.000008036841
-  m_Size: 0.98809654
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1762,7 +1823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1624591259
 GameObject:
@@ -1982,7 +2043,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808654483
 GameObject:
@@ -2270,7 +2331,7 @@ RectTransform:
   - {fileID: 21895920}
   - {fileID: 536619502}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2393,8 +2454,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: -23}
-  m_SizeDelta: {x: 1138.6831, y: 630.4056}
+  m_AnchoredPosition: {x: -6.0187, y: -17.9308}
+  m_SizeDelta: {x: 1214.7207, y: 640.5439}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026870351
 MonoBehaviour:
@@ -2624,7 +2685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2130366128
 GameObject:
@@ -2786,7 +2847,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2132402850}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 435583204}
+        m_TargetAssemblyTypeName: ChatAndToGame, Assembly-CSharp
+        m_MethodName: LeaveRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2132402850
 MonoBehaviour:
   m_ObjectHideFlags: 0
