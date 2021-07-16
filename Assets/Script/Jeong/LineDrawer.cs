@@ -54,7 +54,7 @@ public class LineDrawer : MonoBehaviour
                 Destroy(currentrLine.gameObject);
             }
             else {
-                //currentrLine.UsePhysice(true);
+                currentrLine.UsePhysice(true);
                 currentrLine = null;
             }
         }
