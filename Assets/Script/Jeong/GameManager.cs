@@ -27,23 +27,22 @@ public class GameManager : UnitySingleton<GameManager>
             sceneNames = new List<string>();
     }
 
+    public void SetPlayer(GameObject playerList) {
+        this.playerList.Add(playerList);
+    }
+
     /// <summary>
     /// 플레이어가 출구에 들어갈 경우 카운트를 증가 시켜줌
     /// 만약 Max에 도달하면 다음 스테이지로 이동함.
     /// </summary>
-    public void EnterPlayer() {
+    public void EnterPlayer(GameObject player) {
         playerCount++;
-        if (playerList.Count => playerCount) {
+        player.SetActive(false);
+        if (playerList.Count >= playerCount) {
             playerCount = 0;
             SceneManager.LoadScene(sceneNames[++stageIndex]);
         }
     }
 
-    /// <summary>
-    /// 플레이어가 출구엑서 나올 경우 적용ㄷ
-    /// </summary>
-    public void ExitPlayer() {
-        playerCount--;
-    }
 
 }
