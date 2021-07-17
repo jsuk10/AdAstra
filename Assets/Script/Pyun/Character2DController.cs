@@ -8,6 +8,7 @@ public class Character2DController : MonoBehaviour
 {
     public float maxSpeed = 1;
     public float jumpForce = 1;
+    public Text nickNameText;
 
     private Rigidbody2D _rigidbody;
     private SpriteRenderer spriteRenderer;
@@ -22,6 +23,8 @@ public class Character2DController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
+        nickNameText.text = view.IsMine ? PhotonNetwork.NickName : view.Owner.NickName;
+        nickNameText.color = view.IsMine ? Color.green : Color.white;
     }
 
     void Update()
