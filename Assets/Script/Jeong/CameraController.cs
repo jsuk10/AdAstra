@@ -2,7 +2,7 @@ using UnityEngine;
 using Cinemachine;
 using System.Collections.Generic;
 using System;
-
+using System.Collections;
 
 public class CameraController : UnitySingleton<CameraController>
 {
@@ -38,13 +38,43 @@ public class CameraController : UnitySingleton<CameraController>
     {
         virtualCamera.Follow = target;
     }
-
-    public override void OnCreated()
-    {
+    [ContextMenu("Shake")]
+    public void Test() {
+        ShakeCamera(5.0f,2f);
     }
 
-
-    public override void OnInitiate()
+    /// <summary>
+    /// 카메라 흔드는 함수
+    /// </summary>
+    /// <param name="intensity"></param>
+    /// <param name="time"></param
+    public void ShakeCamera(float intensity, float time)
     {
+        StartCoroutine(IShakeCamera(intensity, time));
+        
     }
+
+    /// <summary>
+    /// 몇초 흔들릴지 세주는 코루틴
+    /// </summary>
+    /// <param name="intensity"></param>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    IEnumerator IShakeCamera(float intensity, float time) {
+        float timeTemp = 0;
+        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
+            virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
+        while (time > timeTemp) {
+            timeTemp += 1.0f;
+            yield return new WaitForSeconds(1.0f);
+        }
+        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
+        yield return null;
+    }
+
+    public override void OnCreated() { }
+
+
+    public override void OnInitiate() { }
 }
