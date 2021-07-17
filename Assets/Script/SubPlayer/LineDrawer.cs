@@ -35,9 +35,9 @@ public class LineDrawer : MonoBehaviour
 
     void BeginDraw()
     {
-        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(+5.19f, 0, 0);
-        if (mousePosition.x < -5.5 && mousePosition.y < -5.5f)
+        if(Input.mousePosition.x < 300f && Input.mousePosition.y < 300f )
             return;
+        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(+5.19f, 0, 0);
         currentrLine = Instantiate(linePrefab, this.transform).GetComponent<Line>();
         currentrLine.UsePhysice(false);
         currentrLine.SetLineColor(palette.SelectedColor);
