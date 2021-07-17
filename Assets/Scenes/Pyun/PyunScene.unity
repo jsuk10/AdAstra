@@ -1679,6 +1679,10 @@ PrefabInstance:
       propertyPath: palette
       value: 
       objectReference: {fileID: 1004973517}
+    - target: {fileID: 6575380541653132558, guid: b9532e553c9fe426aa7ffe9c72d1cdae, type: 3}
+      propertyPath: linePrefab
+      value: 
+      objectReference: {fileID: 5849999820361077777, guid: 0820b0531a34e64438c9965fd64d2808, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9532e553c9fe426aa7ffe9c72d1cdae, type: 3}
 --- !u!1 &1813651485

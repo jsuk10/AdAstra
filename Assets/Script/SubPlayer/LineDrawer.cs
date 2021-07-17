@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 public class LineDrawer : MonoBehaviour
 {
@@ -37,8 +38,8 @@ public class LineDrawer : MonoBehaviour
     {
         if(Input.mousePosition.x < 300f && Input.mousePosition.y < 300f )
             return;
-        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(+5.19f, 0, 0);
-        currentrLine = Instantiate(linePrefab, this.transform).GetComponent<Line>();
+        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        currentrLine = PhotonNetwork.Instantiate(linePrefab.name, this.transform.position, Quaternion.identity).GetComponent<Line>();
         currentrLine.UsePhysice(false);
         currentrLine.SetLineColor(palette.SelectedColor);
         currentrLine.SetPointsDistance(linePointsMinDistance);
@@ -47,7 +48,7 @@ public class LineDrawer : MonoBehaviour
     } 
     void Draw()
     {
-        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(+5.19f, 0,0);
+        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         currentrLine.AddPoint(mousePosition);
     }
     void EndDraw()

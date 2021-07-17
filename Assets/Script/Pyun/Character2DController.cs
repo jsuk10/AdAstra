@@ -74,8 +74,10 @@ public class Character2DController : MonoBehaviour
 
 
             //Direction Sprite
-            if (Input.GetButtonDown("Horizontal"))
-                spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            // if (Input.GetButtonDown("Horizontal"))
+            //     spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            float axis = Input.GetAxisRaw("Horizontal");
+            if(axis != 0) view.RPC("FlipXRPC", RpcTarget.AllBuffered, axis);
 
             //Animation
             if (Mathf.Abs(_rigidbody.velocity.x) < 0.3)
@@ -83,6 +85,12 @@ public class Character2DController : MonoBehaviour
             else
                 anim.SetBool("isWalking", true);
         }
+    }
+
+    [PunRPC]
+    void FlipXRPC(float axis)
+    {
+        spriteRenderer.flipX = axis == -1;
     }
         
     // private void OnCollisionEnter2D(Collision2D other) {
