@@ -14,6 +14,8 @@ public class Character2DController : MonoBehaviour
     Animator anim;
     PhotonView view;
 
+    private bool canExit;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -83,4 +85,15 @@ public class Character2DController : MonoBehaviour
         }
     }
         
+    // private void OnCollisionEnter(Collision other) {
+    //     if(other.tag == "Finish"){
+    //         canExit = true;
+    //     }
+    // }
+
+    // private void OnCollisionExit(Collision other) {
+    //     if(other.tag == "Finish"){
+    //         canExit = false;
+    //     }
+    // }
 }
