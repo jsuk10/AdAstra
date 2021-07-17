@@ -33,7 +33,6 @@ public abstract class Singleton<T> : ISingleton where T : Singleton<T>, new()
         _instance = new T();
 
         var _singleton = _instance as Singleton<T>;
-
         _singleton.OnCreated();
         _singleton.OnInitiate();
 
@@ -60,7 +59,7 @@ public abstract class UnitySingleton<T> : MonoBehaviour, ISingleton where T : Un
         _instance = FindObjectOfType<T>();
 
         var _singleton = _instance as UnitySingleton<T>;
-
+        DontDestroyOnLoad(FindObjectOfType<T>());
         _singleton.OnCreated();
         _singleton.OnInitiate();
 
