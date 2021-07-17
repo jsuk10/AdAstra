@@ -12,11 +12,13 @@ public class ChatAndToGame : MonoBehaviourPunCallbacks
     public Text[] ChatText;
     public PhotonView PV;
     public InputField ChatInput;
+    public Text TitleText;
     
     void Start()
     {
         RoomRenewal();
         ChatInput.text = "";
+        TitleText.text = PhotonNetwork.CurrentRoom.Name;
         for(int i = 0; i < ChatText.Length; i++) ChatText[i].text = "";
     }
 
@@ -71,7 +73,6 @@ public class ChatAndToGame : MonoBehaviourPunCallbacks
     public void Send()
     {
         PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName+ " : "+ ChatInput.text);
-        Debug.Log(PhotonNetwork.NickName+ " : "+ ChatInput.text);
         ChatInput.text = "";
     }
 
