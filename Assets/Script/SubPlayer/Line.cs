@@ -77,8 +77,9 @@ public class Line : MonoBehaviour
         rigidbody2D.isKinematic = !usePhysics;
     }
 
-    public void SetLineColor(Gradient colorGradient) {
-        lineRenderer.colorGradient = colorGradient;
+    public void SetLineColor(Color color) {
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
     }
     public void SetPointsDistance(float distance)
     {

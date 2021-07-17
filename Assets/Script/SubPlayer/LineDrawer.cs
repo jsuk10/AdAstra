@@ -9,9 +9,12 @@ public class LineDrawer : MonoBehaviour
     public float linePointsMinDistance;
     public float lineWidth;
 
-    Camera cam;
+    private Camera cam;
 
-    Line currentrLine;
+    private Line currentrLine;
+    [SerializeField] private ColorPaletteController palette;
+    
+
 
     private void Start()
     {
@@ -28,14 +31,16 @@ public class LineDrawer : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
             EndDraw();
-        
     }
 
     void BeginDraw()
     {
+        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(+5.19f, 0, 0);
+        if (mousePosition.x < -5.5 && mousePosition.y < -5.5f)
+            return;
         currentrLine = Instantiate(linePrefab, this.transform).GetComponent<Line>();
         currentrLine.UsePhysice(false);
-        currentrLine.SetLineColor(lineColor);
+        currentrLine.SetLineColor(palette.SelectedColor);
         currentrLine.SetPointsDistance(linePointsMinDistance);
         currentrLine.SetLineWidth(lineWidth);
 
@@ -55,6 +60,7 @@ public class LineDrawer : MonoBehaviour
             }
             else {
                 currentrLine.UsePhysice(true);
+                currentrLine.SetMass();
                 currentrLine = null;
             }
         }
