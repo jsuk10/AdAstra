@@ -85,15 +85,17 @@ public class Character2DController : MonoBehaviour
         }
     }
         
-    // private void OnCollisionEnter(Collision other) {
-    //     if(other.tag == "Finish"){
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     if(other.gameObject.tag == "Finish"){
     //         canExit = true;
+    //         Debug.Log("canExit = true");
     //     }
     // }
 
-    // private void OnCollisionExit(Collision other) {
-    //     if(other.tag == "Finish"){
+    // private void OnCollisionExit2D(Collision2D other) {
+    //     if(other.gameObject.tag == "Finish"){
     //         canExit = false;
+    //         Debug.Log("canExit = false");
     //     }
     // }
 }
