@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 6193974613853044163}
   - component: {fileID: 6193974613853044162}
   - component: {fileID: 6193974613853044161}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 6193974613746605108}
   - {fileID: 6193974614706571462}
-  startSpeed: 2
+  speed: 2
   wayPointCurve:
     serializedVersion: 2
     m_Curve:
