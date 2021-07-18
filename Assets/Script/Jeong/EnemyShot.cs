@@ -27,7 +27,7 @@ public class EnemyShot : MonoBehaviour
         if (capsuleCollider == null)
             capsuleCollider = GetComponent<CapsuleCollider2D>();
         bulletPosition = new Vector3((float)capsuleCollider.size.x + 0.5f, (float)capsuleCollider.size.y/2, 0f);
-            
+
         //for (int i = 0; i < shotParticle.Length; i++)
         //    shotParticle[i].Stop();
         InvokeRepeating("CreateBullet", builletInterver, builletInterver);
@@ -36,9 +36,14 @@ public class EnemyShot : MonoBehaviour
     private void CreateBullet()
     {
         //for (int i = 0; i < shotParticle.Length; i++)
-            //shotParticle[i].Play();
-
+        //shotParticle[i].Play();
         //Instantiate(bulletPrefabs, shotParticle[0].gameObject.transform.position, transform.rotation);
-        Instantiate(bulletPrefabs, this.transform.position + bulletPosition, transform.rotation);
+
+        if (this.transform.rotation.y != 0)
+        {
+            bulletPosition.x = -bulletPosition.x;
+        }
+        Instantiate(bulletPrefabs, this.transform.position + bulletPosition, this.transform.rotation);
+
     }
 }
