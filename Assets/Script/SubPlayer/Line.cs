@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Line : MonoBehaviour
+public class Line : MonoBehaviourPun
 {
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private EdgeCollider2D edgeCollider2D;
@@ -15,6 +16,8 @@ public class Line : MonoBehaviour
 
     private float pointsMinDistance = 0.1f;
     private float circleColliderRadius;
+
+    public PhotonView photonView;
 
     /// <summary>
     /// 각 객체가 없을 경우 할당해준다.
@@ -32,6 +35,7 @@ public class Line : MonoBehaviour
     /// 포인트를 더하는 함수입니다.
     /// </summary>
     /// <param name="newPoint">새로운 포인트</param>
+    [PunRPC]
     public void AddPoint(Vector2 newPoint) {
         float distance = 0;
         if (pointsCount >= 1)
@@ -64,27 +68,30 @@ public class Line : MonoBehaviour
     /// <summary>
     /// 마지막 포인트를 얻어오는 것입니
     /// </summary>
+    [PunRPC]
     public Vector2 GetLastPoint() {
         return (Vector2) lineRenderer.GetPosition(pointsCount - 1);
 
     }
-
+    [PunRPC]
     public void SetMass() {
         rigidbody2D.mass = totalDistance / massAdjustmentValue;
     }
-
+    [PunRPC]
     public void UsePhysice(bool usePhysics) {
         rigidbody2D.isKinematic = !usePhysics;
     }
-
+    [PunRPC]
     public void SetLineColor(Color color) {
         lineRenderer.startColor = color;
         lineRenderer.endColor = color;
     }
+    [PunRPC]
     public void SetPointsDistance(float distance)
     {
         pointsMinDistance = distance;
     }
+    [PunRPC]
     public void SetLineWidth(float width) {
         lineRenderer.startWidth = width;
         lineRenderer.endWidth = width;

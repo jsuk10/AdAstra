@@ -205,6 +205,7 @@ MonoBehaviour:
   rigidbody2D: {fileID: 6741937548359832336}
   massAdjustmentValue: 1
   totalDistance: 0
+  photonView: {fileID: 4185083027734897882}
 --- !u!114 &4185083027734897882
 MonoBehaviour:
   m_ObjectHideFlags: 0
