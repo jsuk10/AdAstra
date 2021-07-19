@@ -297,7 +297,6 @@ GameObject:
   m_Component:
   - component: {fileID: 268240573}
   - component: {fileID: 268240572}
-  - component: {fileID: 268240574}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -317,16 +316,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3578d4db996249bbb6c0a6b38e3a7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNames:
-  - PyunScene
-  - Stage2
-  - Stage3
   playerList: []
   voteRate: 0.3
   maxInk: 30
   useInk: 0
   usedInk: 0
-  PV: {fileID: 268240574}
+  PV: {fileID: 0}
 --- !u!4 &268240573
 Transform:
   m_ObjectHideFlags: 0
@@ -1010,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2408cfac59543b194de5a3c73f0fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkSlider: {fileID: 0}
+  inkSlider: {fileID: 1658103}
 --- !u!4 &2074379917
 Transform:
   m_ObjectHideFlags: 0
