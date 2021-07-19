@@ -75,6 +75,29 @@ public class Character2DController : MonoBehaviour
 
             }
 
+            //Turn off Addforce when against wall - 벽에 닿으면 Addforce를 없애기
+            if (_rigidbody.velocity.x < 1f){
+
+                Debug.DrawRay(_rigidbody.position, Vector3.right, new Color(0, 1, 0));
+                Debug.DrawRay(_rigidbody.position, Vector3.left, new Color(0, 1, 0));
+
+                RaycastHit2D rayHit_left = Physics2D.Raycast(_rigidbody.position, Vector3.left, 1, LayerMask.GetMask("Platform"));
+                RaycastHit2D rayHit_right = Physics2D.Raycast(_rigidbody.position, Vector3.right, 1, LayerMask.GetMask("Platform"));
+
+                if(rayHit_left.collider != null){
+                    if (h < 0){
+                        Debug.Log("against wall");
+                        _rigidbody.AddForce(Vector2.right*(-1 * h), ForceMode2D.Impulse);
+                    }
+                }
+
+                if(rayHit_right.collider != null){
+                    if (h > 0){
+                        Debug.Log("against wall");
+                        _rigidbody.AddForce(Vector2.right*(-1 * h), ForceMode2D.Impulse);
+                    }
+                }
+            }
 
             //Direction Sprite
             // if (Input.GetButtonDown("Horizontal"))
@@ -109,4 +132,5 @@ public class Character2DController : MonoBehaviour
     //         Debug.Log("canExit = false");
     //     }
     // }
+
 }
