@@ -14,7 +14,7 @@ public class SpawnPlayers : MonoBehaviour
 
     private void Start()
     {
-        Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        Vector2 randomPosition = new Vector2(this.transform.position.x + Random.Range(minX, maxX), this.transform.position.y + Random.Range(minY, maxY));
         var player = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
         CameraController.Instance.ChangeCameraTarget(player);
         // player.name = PhotonNetwork.LocalPlayer.NickName;
