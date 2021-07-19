@@ -44,7 +44,10 @@ public class LineDrawer : MonoBehaviourPun
         currentrLine = obj.GetComponent<Line>();
         PV = obj.GetComponent<PhotonView>();
         PV.RPC("UsePhysice", RpcTarget.All, false);
-        PV.RPC("SetLineColor", RpcTarget.All, palette.SelectedColor);
+        float r = palette.SelectedColor.r;
+        float g = palette.SelectedColor.g;
+        float b = palette.SelectedColor.b;
+        PV.RPC("SetLineColor", RpcTarget.All, r, g, b);
         PV.RPC("SetPointsDistance", RpcTarget.All, linePointsMinDistance);
         PV.RPC("SetLineWidth", RpcTarget.All, lineWidth);
         // currentrLine.UsePhysice(false);

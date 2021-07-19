@@ -82,7 +82,8 @@ public class Line : MonoBehaviourPun
         rigidbody2D.isKinematic = !usePhysics;
     }
     [PunRPC]
-    public void SetLineColor(Color color) {
+    public void SetLineColor(float r, float g, float b) {
+        Color color = new Color(r,g,b);
         lineRenderer.startColor = color;
         lineRenderer.endColor = color;
     }
