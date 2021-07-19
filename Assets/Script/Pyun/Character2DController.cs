@@ -52,6 +52,10 @@ public class Character2DController : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.Instance.playerNickList.Contains(view.Owner.NickName)){
+            view.gameObject.SetActive(false);
+            GameManager.Instance.GetDirctionary("LineDrowing").SetActive(false);
+        }
         if(view.IsMine) //내 케릭터인지 체크
         {
             //Move Speed - 가로 방향으로 버튼 누르면 힘 주어 가속도 증가
@@ -151,14 +155,12 @@ public class Character2DController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Finish" && view.IsMine){
             canExit = true;
-            Debug.Log("canExit = true");
         }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.tag == "Finish" && view.IsMine){
             canExit = false;
-            Debug.Log("canExit = false");
         }
     }
 

@@ -14,7 +14,7 @@ public class GameManager : UnitySingleton<GameManager>
     [SerializeField] private Dictionary<string, GameObject> dirctionary;
     [SerializeField] private List<string> sceneNames;
     [SerializeField] private List<GameObject> playerList;
-    [SerializeField] private HashSet<string> playerNickList;
+    public HashSet<string> playerNickList;
     [SerializeField] private float voteRate = 0.3f;
     public float maxInk = 30f;
     public float useInk = 0f;
