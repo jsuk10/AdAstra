@@ -200,5 +200,6 @@ MonoBehaviour:
   lineRenderer: {fileID: 3668294323203500947}
   edgeCollider2D: {fileID: 944101911966766258}
   rigidbody2D: {fileID: 4492083261870435476}
-  massAdjustmentValue: 1
+  massAdjustmentValue: 3
   totalDistance: 0
+  photonView: {fileID: 0}
