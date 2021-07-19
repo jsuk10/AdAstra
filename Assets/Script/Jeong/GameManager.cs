@@ -10,9 +10,9 @@ using UnityEngine.UI;
 public class GameManager : UnitySingleton<GameManager>
 {
     private int playerCount;
+    [SerializeField] private Dictionary<string, GameObject> dirctionary;
     [SerializeField] private List<string> sceneNames;
     [SerializeField] private List<GameObject> playerList;
-    [SerializeField] private Canvas canvas;
     [SerializeField] private float voteRate = 0.3f;
     public float maxInk = 30f;
     public float useInk = 0f;
@@ -37,11 +37,6 @@ public class GameManager : UnitySingleton<GameManager>
         get => maxInk;
         set => maxInk = value;
     }
-    public Canvas Canvas
-    {
-        get => canvas;
-        set => canvas = value;
-    }
     public override void OnCreated()
     {
         //throw new System.NotImplementedException();
@@ -51,10 +46,9 @@ public class GameManager : UnitySingleton<GameManager>
     {
         stageIndex = 0;
         playerCount = 0;
+        dirctionary = new Dictionary<string, GameObject>();
         if (sceneNames == null || sceneNames.Count == 0)
             sceneNames = new List<string>();
-        if (canvas == null)
-            canvas = FindObjectOfType<Canvas>();
     }
 
     private void Start()
@@ -74,7 +68,17 @@ public class GameManager : UnitySingleton<GameManager>
             ReLoadScene();
         }
     }
-    
+
+
+    public void SetDirctionary(string name, GameObject gameObject)
+    {
+        dirctionary.Add(name, gameObject);
+    }
+
+    public GameObject GetDirctionary(string name)
+    {
+        return dirctionary[name];
+    }
 
     /// <summary>
     /// 신을 다시 연다
