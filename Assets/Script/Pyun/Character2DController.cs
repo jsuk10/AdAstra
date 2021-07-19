@@ -50,6 +50,7 @@ public class Character2DController : MonoBehaviour
     {
         if(view.IsMine) //내 케릭터인지 체크
         {
+            GameManager.Instance.SetPlayer(this.gameObject);
             //Move Speed - 가로 방향으로 버튼 누르면 힘 주어 가속도 증가
             float h = Input.GetAxisRaw("Horizontal");
             _rigidbody.AddForce(Vector2.right*h, ForceMode2D.Impulse);

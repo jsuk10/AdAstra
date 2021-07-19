@@ -17,9 +17,20 @@ public class ScenesManagers : UnitySingleton<ScenesManagers>
     {
     }
 
+
+
+    /// <summary>
+    /// 신을 다시 연다
+    /// </summary>
+    public void ReLoadScene()
+    {
+        SceneManager.LoadScene(sceneNames[sceneIndex]);
+    }
+
     public void LoadScenes()
     {
         SceneManager.LoadScene(sceneNames[sceneIndex++]);
+        //SceneManager.LoadScene(sceneNames[sceneIndex++]);
         SoundManager.Instance.PlayBackGroundSound(2);
         GameManager.Instance.MaxInk = inkSize[sceneIndex];
         GameManager.Instance.useInk = 0f;
