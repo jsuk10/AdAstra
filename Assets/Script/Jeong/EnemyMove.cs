@@ -13,16 +13,12 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     [Range(1, 10)]
     protected float speed = 2f;
-
-    [Tooltip("움직임 자연스럽게 하는 커브")]
+    [Tooltip("미는 힘" )]
     [SerializeField]
-    protected AnimationCurve wayPointCurve;
+    private float force = 1;
 
-    [Tooltip("이동중에 멈추는지 않는지")]
-    [SerializeField]
-    private bool isStop = false;
+    private Rigidbody2D rb;
 
-    private float requiredTime;
     private int targetIndex = 1;
     private int tempStartIndex = 0;
 
@@ -39,6 +35,8 @@ public class EnemyMove : MonoBehaviour
         if (wayPoints.Length > 0)
             this.transform.position = wayPoints[tempStartIndex].gameObject.transform.position;
         StartCoroutine(Translate());
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
 
     }
 
@@ -59,59 +57,27 @@ public class EnemyMove : MonoBehaviour
     virtual protected IEnumerator Translate()
     {
 
-        time = 0;
-        CalculationRequiredTime();
         FlipSize();
+        Vector3 dirction = new Vector3();
 
         yield return new WaitForSeconds(Random.Range(0f, 1f));
         while (true)
         {
-            if (isStop && 0 == Random.Range(0, 100)) {
-                yield return new WaitForSeconds(0.5f);
-            }
-            time += Time.deltaTime;
-            if (time > requiredTime)
+            if (this.transform.position.x > wayPoints[1].transform.position.x)
             {
-                time = 0;
-                targetIndex++;
-                tempStartIndex = targetIndex - 1;
-                if (targetIndex >= wayPoints.Length)
-                {
-                    targetIndex = 0;
-                    tempStartIndex = wayPoints.Length - 1;
-                }
-                CalculationRequiredTime();
                 FlipSize();
+                dirction.x = -1;
+            }
+            else if(this.transform.position.x < wayPoints[0].transform.position.x)
+            {
+                FlipSize();
+                dirction.x = +1;
             }
 
-            Vector3 moveVector = this.transform.position;
-            moveVector.x = Vector3.Lerp(startPosition, wayPoints[targetIndex].transform.position, wayPointCurve.Evaluate(time / requiredTime)).x;
-
-            this.transform.position = moveVector;
+            rb.AddForce(dirction * force);
             yield return null;
 
         }
-    }
-
-    /// <summary>
-    /// 다음 웨이포인트까지 이동시간 연산함.
-    /// </summary>
-    void CalculationRequiredTime()
-    {
-        startPosition = this.gameObject.transform.position;
-        CalculationDistance(wayPoints[targetIndex].transform.position);
-        requiredTime = targetDistance / speed;
-
-    }
-
-    /// <summary>
-    /// 다음 웨이포인트까지 거리 연산함.
-    /// </summary>
-    /// <param name="targetPosition"></param>
-    public void CalculationDistance(Vector3 targetPosition)
-    {
-        targetDirction = (targetPosition - this.gameObject.transform.position).normalized;
-        targetDistance = Vector3.Magnitude(this.gameObject.transform.position - targetPosition);
     }
 
     /// <summary>
