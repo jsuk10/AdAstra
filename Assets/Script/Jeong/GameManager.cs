@@ -12,7 +12,8 @@ public class GameManager : UnitySingleton<GameManager>
     private int playerCount;
     [SerializeField] private List<string> sceneNames;
     [SerializeField] private List<GameObject> playerList;
-    [SerializeField]private Canvas canvas;
+    [SerializeField] private List<float> inkList;
+    [SerializeField] private Canvas canvas;
     [SerializeField] private float voteRate = 0.3f;
     private int voteCount = 0;
     private int stageIndex;
@@ -63,6 +64,7 @@ public class GameManager : UnitySingleton<GameManager>
     public void SetPlayer(GameObject playerList) {
         this.playerList.Add(playerList);
     }
+
 
     /// <summary>
     /// 플레이어가 출구에 들어갈 경우 카운트를 증가 시켜줌
