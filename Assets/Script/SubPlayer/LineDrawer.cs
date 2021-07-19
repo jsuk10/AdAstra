@@ -8,6 +8,9 @@ public class LineDrawer : MonoBehaviour
     public Gradient lineColor;
     public float linePointsMinDistance;
     public float lineWidth;
+    public float maxInk = 30f;
+    public float noewInk = 30f;
+   
 
     private Camera cam;
 
@@ -66,4 +69,10 @@ public class LineDrawer : MonoBehaviour
         }
     }
 
+
+    public void UseInk() {
+        float inkper = noewInk / maxInk;
+
+        return;
+    }
 }
