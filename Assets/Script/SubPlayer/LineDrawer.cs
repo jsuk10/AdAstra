@@ -81,7 +81,7 @@ public class LineDrawer : MonoBehaviourPun
                 // currentrLine.SetMass();
                 PV.RPC("UsePhysice", RpcTarget.All, true);
                 PV.RPC("SetMass", RpcTarget.All);
-                GameManager.Instance.usedInk = GameManager.Instance.useInk;
+                GameManager.Instance.usedInk += GameManager.Instance.useInk;
                 GameManager.Instance.useInk = 0;
                 UIManager.Instance.AddChange();
                 //UseInk();
