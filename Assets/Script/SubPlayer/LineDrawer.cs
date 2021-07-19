@@ -15,12 +15,13 @@ public class LineDrawer : MonoBehaviourPun
 
     private Line currentrLine;
     [SerializeField] private ColorPaletteController palette;
-
+    [SerializeField] private GameObject LineDraw;
     public PhotonView PV;
 
     private void Start()
     {
         cam = Camera.main;
+        GameManager.Instance.SetDirctionary(LineDraw.name, LineDraw);
     }
 
     private void Update()

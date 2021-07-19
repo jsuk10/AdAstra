@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Pun;
 
 /// <summary>
 /// 게임을 관리해주는 매니저 다음 스테이지로 넘어가고 count를 올리고 내려줌
@@ -22,6 +23,7 @@ public class GameManager : UnitySingleton<GameManager>
     private int voteCount = 0;
     private int stageIndex;
 
+    public PhotonView PV;
 
     public float UsedInk
     {
