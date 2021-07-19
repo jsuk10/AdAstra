@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 165651786}
   - component: {fileID: 165651785}
   - component: {fileID: 165651784}
+  - component: {fileID: 165651788}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -223,6 +224,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &165651788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165651783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177f62002e1c146518c34071b42040f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &267973035
 GameObject:
   m_ObjectHideFlags: 0
@@ -36231,7 +36244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8661538646498861033, guid: db2f3584272377949a1d20d229f0de65, type: 3}
       propertyPath: m_Name
-      value: ColorPalette
+      value: palette
       objectReference: {fileID: 0}
     - target: {fileID: 8661538646498861033, guid: db2f3584272377949a1d20d229f0de65, type: 3}
       propertyPath: m_IsActive
