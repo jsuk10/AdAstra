@@ -157,10 +157,6 @@ MonoBehaviour:
   - Stage2
   - Stage3
   playerList: []
-  inkList:
-  - 100
-  - 30
-  - 30
   canvas: {fileID: 0}
   voteRate: 0.3
   maxInk: 30
@@ -753,7 +749,10 @@ MonoBehaviour:
   - Stage1
   - Stage2
   - Stage3
-  inkSize: []
+  inkSize:
+  - 100
+  - 100
+  - 100
 --- !u!1 &7941967154093592762
 GameObject:
   m_ObjectHideFlags: 0
