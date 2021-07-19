@@ -16,7 +16,6 @@ public class Character2DController : MonoBehaviour
     PhotonView view;
 
     public GameObject LineDraw;
-    public GameObject ColorPalette;
 
     private bool canExit;
 
@@ -28,20 +27,22 @@ public class Character2DController : MonoBehaviour
         view = GetComponent<PhotonView>();
         nickNameText.text = view.IsMine ? PhotonNetwork.NickName : view.Owner.NickName;
         nickNameText.color = view.IsMine ? Color.green : Color.white;
-        // if(view.IsMine)
-        // {
-        //     if(PhotonNetwork.CurrentRoom.Players[1].NickName==view.Owner.NickName)
-        //     {
-        //         Debug.Log("I'm the Shamen");
-        //         LineDraw.SetActive(true);
-        //         ColorPalette.SetActive(true);
-        //     }
-        //     else{
-        //         Debug.Log("Not Shamen");
-        //         LineDraw.SetActive(false);
-        //         ColorPalette.SetActive(false);
-        //     }
-        // }
+        if(view.IsMine)
+        {
+            if(PhotonNetwork.CurrentRoom.Players[1].NickName==view.Owner.NickName)
+            {
+                Debug.Log("I'm the Shamen");
+                LineDraw.SetActive(true);
+                UIManager.Instance.GetDirctionary("palette").SetActive(true);
+                UIManager.Instance.GetDirctionary("InkSlider").SetActive(true);
+            }
+            else{
+                Debug.Log("Not Shamen");
+                LineDraw.SetActive(false);
+                UIManager.Instance.GetDirctionary("palette").SetActive(false);
+                UIManager.Instance.GetDirctionary("InkSlider").SetActive(false);
+            }
+        }
         
     }
 
