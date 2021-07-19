@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pyun/PyunScene.unity
     guid: 1074c1781bc353f4cb1be05e92900824
+  - enabled: 1
+    path: Assets/Scenes/Pyun/Stage2.unity
+    guid: 1a80a7c68ca0d2a4dae5f30f7c0c04a6
   m_configObjects: {}

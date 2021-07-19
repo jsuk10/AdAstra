@@ -284,6 +284,7 @@ MonoBehaviour:
   jumpForce: 8
   nickNameText: {fileID: 6615695309986602758}
   LineDraw: {fileID: 6575380541653132544, guid: b9532e553c9fe426aa7ffe9c72d1cdae, type: 3}
+  playerObject: {fileID: 0}
 --- !u!114 &5264142889348687690
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class GameManager : UnitySingleton<GameManager>
     [SerializeField] private Dictionary<string, GameObject> dirctionary;
     [SerializeField] private List<string> sceneNames;
     [SerializeField] private List<GameObject> playerList;
+    [SerializeField] private HashSet<string> playerNickList;
     [SerializeField] private float voteRate = 0.3f;
     public float maxInk = 30f;
     public float useInk = 0f;
@@ -57,6 +58,8 @@ public class GameManager : UnitySingleton<GameManager>
     {
         useInk = 0;
         usedInk = 0;
+        playerCount = 0;
+        playerNickList = new HashSet<string>();
     }
     /// <summary>
     /// 다시 시작하는 함수
@@ -104,14 +107,21 @@ public class GameManager : UnitySingleton<GameManager>
     /// 만약 Max에 도달하면 다음 스테이지로 이동함.
     /// 플레이어를 넘겨줘서 안보이게 해야
     /// </summary>
-    public void EnterPlayer(GameObject player) {
+    [PunRPC]
+    public void EnterPlayer(string nickName) {
         playerCount++;
-        player.SetActive(false);
-        if (playerList.Count >= playerCount) {
+        playerNickList.Add(nickName);
+        if(PhotonNetwork.CurrentRoom.Players.Count == playerNickList.Count) {
             playerCount = 0;
             voteCount = 0;
+            playerNickList = new HashSet<string>();
             SceneManager.LoadScene(sceneNames[++stageIndex]);
-        }
+        };
+    }
+
+    public void toAllEnterPlayer(string nickName) {
+        Debug.Log("Called");
+        PV.RPC("EnterPlayer", RpcTarget.All, nickName);
     }
 
 

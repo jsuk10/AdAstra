@@ -19,6 +19,8 @@ public class Character2DController : MonoBehaviour
 
     private bool canExit;
 
+    public GameObject playerObject;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -131,6 +133,12 @@ public class Character2DController : MonoBehaviour
                 anim.SetBool("isWalking", false);
             else
                 anim.SetBool("isWalking", true);
+
+            if(Input.GetAxisRaw("Vertical")>0){
+                if(canExit){
+                    GameManager.Instance.toAllEnterPlayer(PhotonNetwork.NickName);
+                }
+            }
         }
     }
 
@@ -140,18 +148,18 @@ public class Character2DController : MonoBehaviour
         spriteRenderer.flipX = axis == -1;
     }
         
-    // private void OnCollisionEnter2D(Collision2D other) {
-    //     if(other.gameObject.tag == "Finish"){
-    //         canExit = true;
-    //         Debug.Log("canExit = true");
-    //     }
-    // }
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Finish" && view.IsMine){
+            canExit = true;
+            Debug.Log("canExit = true");
+        }
+    }
 
-    // private void OnCollisionExit2D(Collision2D other) {
-    //     if(other.gameObject.tag == "Finish"){
-    //         canExit = false;
-    //         Debug.Log("canExit = false");
-    //     }
-    // }
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.tag == "Finish" && view.IsMine){
+            canExit = false;
+            Debug.Log("canExit = false");
+        }
+    }
 
 }
