@@ -9,15 +9,13 @@ public class LineDrawer : MonoBehaviourPun
     public Gradient lineColor;
     public float linePointsMinDistance;
     public float lineWidth;
-    public float maxInk = 30f;
-    public float noewInk = 30f;
-   
+
 
     private Camera cam;
 
     private Line currentrLine;
     [SerializeField] private ColorPaletteController palette;
-    
+
     public PhotonView PV;
 
     private void Start()
@@ -39,7 +37,7 @@ public class LineDrawer : MonoBehaviourPun
 
     void BeginDraw()
     {
-        if(Input.mousePosition.x < 300f && Input.mousePosition.y < 300f )
+        if (Input.mousePosition.x < 300f && Input.mousePosition.y < 300f)
             return;
         Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         // currentrLine = PhotonNetwork.Instantiate(linePrefab.name, this.transform.position, Quaternion.identity).GetComponent<Line>();
@@ -58,9 +56,14 @@ public class LineDrawer : MonoBehaviourPun
         // currentrLine.SetPointsDistance(linePointsMinDistance);
         // currentrLine.SetLineWidth(lineWidth);
 
-    } 
+    }
     void Draw()
     {
+        GameManager.Instance.useInk = currentrLine.totalDistance;
+        UIManager.Instance.AddChange();
+        //UseInk();
+        if (GameManager.Instance.useInk + GameManager.Instance.usedInk > GameManager.Instance.maxInk)
+            return;
         Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         PV.RPC("AddPoint", RpcTarget.All, mousePosition);
         // currentrLine.AddPoint(mousePosition);
@@ -78,15 +81,12 @@ public class LineDrawer : MonoBehaviourPun
                 // currentrLine.SetMass();
                 PV.RPC("UsePhysice", RpcTarget.All, true);
                 PV.RPC("SetMass", RpcTarget.All);
+                GameManager.Instance.usedInk = GameManager.Instance.useInk;
+                GameManager.Instance.useInk = 0;
+                UIManager.Instance.AddChange();
+                //UseInk();
                 currentrLine = null;
             }
         }
-    }
-
-
-    public void UseInk() {
-        float inkper = noewInk / maxInk;
-
-        return;
     }
 }
