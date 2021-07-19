@@ -80,11 +80,15 @@ public class ChatAndToGame : MonoBehaviourPunCallbacks
     [PunRPC]
     void GameRPC()
     {
-        PhotonNetwork.LoadLevel("PyunScene");
+        ScenesManagers.Instance.LoadScenes();
+        //PhotonNetwork.LoadLevel("PyunScene");
+        SoundManager.Instance.BackGroundSound(2);
+
     }
 
     public void clickToGame()
     {
+
         PV.RPC("GameRPC", RpcTarget.All);
     }
 }

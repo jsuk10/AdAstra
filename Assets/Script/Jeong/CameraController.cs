@@ -8,6 +8,13 @@ public class CameraController : UnitySingleton<CameraController>
 {
     [SerializeField] private Animator ani;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private float correctionValue = 3f;
+
+    private void Start()
+    {
+        if (virtualCamera == null)
+            virtualCamera = GetComponent<CinemachineVirtualCamera>();
+    }
 
     [ContextMenu("Tracking Player")]
     public void ChangeCameraPlayer()
@@ -21,6 +28,7 @@ public class CameraController : UnitySingleton<CameraController>
         ani.Play("Drowing");
 
     }
+
 
     /// <summary>
     /// 가상 카메라의 타겟을 변경해주는 함수
@@ -38,19 +46,15 @@ public class CameraController : UnitySingleton<CameraController>
     {
         virtualCamera.Follow = target;
     }
-    [ContextMenu("Shake")]
-    public void Test() {
-        ShakeCamera(5.0f,2f);
-    }
 
     /// <summary>
     /// 카메라 흔드는 함수
     /// </summary>
     /// <param name="intensity"></param>
-    /// <param name="time"></param
+    /// <param name="time"></param>
     public void ShakeCamera(float intensity, float time)
     {
-        StartCoroutine(IShakeCamera(intensity, time));
+        StartCoroutine(IShakeCamera(intensity/ correctionValue, time));
         
     }
 
@@ -62,10 +66,10 @@ public class CameraController : UnitySingleton<CameraController>
     /// <returns></returns>
     IEnumerator IShakeCamera(float intensity, float time) {
         float timeTemp = 0;
-        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-            virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
         while (time > timeTemp) {
+            Debug.Log("IsShake");
             timeTemp += 1.0f;
             yield return new WaitForSeconds(1.0f);
         }

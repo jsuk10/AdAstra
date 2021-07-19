@@ -9,6 +9,7 @@ public class LineDrawer : MonoBehaviourPun
     public Gradient lineColor;
     public float linePointsMinDistance;
     public float lineWidth;
+    [SerializeField]private Texture2D cursorImg;
 
 
     private Camera cam;
@@ -89,5 +90,8 @@ public class LineDrawer : MonoBehaviourPun
                 currentrLine = null;
             }
         }
+    }
+    public void SetCursor() {
+        Cursor.SetCursor(cursorImg, Vector2.down, CursorMode.ForceSoftware);
     }
 }

@@ -12,7 +12,6 @@ public class GameManager : UnitySingleton<GameManager>
 {
     private int playerCount;
     [SerializeField] private Dictionary<string, GameObject> dirctionary;
-    [SerializeField] private List<string> sceneNames;
     [SerializeField] private List<GameObject> playerList;
     public HashSet<string> playerNickList;
     [SerializeField] private float voteRate = 0.3f;
@@ -50,8 +49,6 @@ public class GameManager : UnitySingleton<GameManager>
         stageIndex = 0;
         playerCount = 0;
         dirctionary = new Dictionary<string, GameObject>();
-        if (sceneNames == null || sceneNames.Count == 0)
-            sceneNames = new List<string>();
     }
 
     private void Start()
@@ -61,6 +58,7 @@ public class GameManager : UnitySingleton<GameManager>
         playerCount = 0;
         playerNickList = new HashSet<string>();
     }
+
     /// <summary>
     /// 다시 시작하는 함수
     /// 카운트를 올리고 만약 카운트가 설정한 비율 이상이면 게임을 다시 시작함.
@@ -70,7 +68,7 @@ public class GameManager : UnitySingleton<GameManager>
         if (voteCount >= playerList.Count * voteRate)
         {
             voteCount = 0;
-            ReLoadScene();
+            ScenesManagers.Instance.ReLoadScene();
         }
     }
 
@@ -85,12 +83,6 @@ public class GameManager : UnitySingleton<GameManager>
         return dirctionary[name];
     }
 
-    /// <summary>
-    /// 신을 다시 연다
-    /// </summary>
-    public void ReLoadScene() {
-        SceneManager.LoadScene(sceneNames[stageIndex]);
-    }
 
 
     /// <summary>
@@ -116,12 +108,13 @@ public class GameManager : UnitySingleton<GameManager>
             voteCount = 0;
             playerNickList = new HashSet<string>();
             SceneManager.LoadScene(sceneNames[++stageIndex]);
-        };
     }
 
     public void toAllEnterPlayer(string nickName) {
         Debug.Log("Called");
         PV.RPC("EnterPlayer", RpcTarget.All, nickName);
+            ScenesManagers.Instance.LoadScenes();
+        }
     }
 
 

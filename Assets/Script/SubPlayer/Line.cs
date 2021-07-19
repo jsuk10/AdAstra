@@ -13,6 +13,7 @@ public class Line : MonoBehaviourPun
     private List<Vector2> points = new List<Vector2>();
     private int pointsCount = 0;
     public int PointsCount { get => this.pointsCount; }
+    private bool isShake = false;
 
     private float pointsMinDistance = 0.1f;
     private float circleColliderRadius;
@@ -29,14 +30,15 @@ public class Line : MonoBehaviourPun
         if (rigidbody2D == null) GetComponent<Rigidbody2D>();
     }
 
-    
+
 
     /// <summary>
     /// 포인트를 더하는 함수입니다.
     /// </summary>
     /// <param name="newPoint">새로운 포인트</param>
     [PunRPC]
-    public void AddPoint(Vector2 newPoint) {
+    public void AddPoint(Vector2 newPoint)
+    {
         float distance = 0;
         if (pointsCount >= 1)
         {
@@ -60,7 +62,8 @@ public class Line : MonoBehaviourPun
         lineRenderer.SetPosition(pointsCount - 1, newPoint);
 
         //Edge Collider
-        if (pointsCount > 1) {
+        if (pointsCount > 1)
+        {
             edgeCollider2D.points = points.ToArray();
         }
     }
@@ -69,21 +72,25 @@ public class Line : MonoBehaviourPun
     /// 마지막 포인트를 얻어오는 것입니
     /// </summary>
     [PunRPC]
-    public Vector2 GetLastPoint() {
-        return (Vector2) lineRenderer.GetPosition(pointsCount - 1);
+    public Vector2 GetLastPoint()
+    {
+        return (Vector2)lineRenderer.GetPosition(pointsCount - 1);
 
     }
     [PunRPC]
-    public void SetMass() {
+    public void SetMass()
+    {
         rigidbody2D.mass = totalDistance / massAdjustmentValue;
     }
     [PunRPC]
-    public void UsePhysice(bool usePhysics) {
+    public void UsePhysice(bool usePhysics)
+    {
         rigidbody2D.isKinematic = !usePhysics;
     }
     [PunRPC]
-    public void SetLineColor(float r, float g, float b) {
-        Color color = new Color(r,g,b);
+    public void SetLineColor(float r, float g, float b)
+    {
+        Color color = new Color(r, g, b);
         lineRenderer.startColor = color;
         lineRenderer.endColor = color;
     }
@@ -93,11 +100,24 @@ public class Line : MonoBehaviourPun
         pointsMinDistance = distance;
     }
     [PunRPC]
-    public void SetLineWidth(float width) {
+    public void SetLineWidth(float width)
+    {
         lineRenderer.startWidth = width;
         lineRenderer.endWidth = width;
         circleColliderRadius = width / 2f;
         edgeCollider2D.edgeRadius = width / 2f;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log($"Endter{other.gameObject.layer}");
+        if (other.gameObject.layer == 6 && isShake == false)
+        {
+            CameraController.Instance.ShakeCamera(rigidbody2D.mass * rigidbody2D.velocity.y, 1f);
+            isShake = true;
+        }
+        if (other.gameObject.layer == 8)
+            Destroy(this.gameObject);
+    }
 }
