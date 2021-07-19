@@ -21,12 +21,22 @@ public class UIManager : UnitySingleton<UIManager>
     public void SetDirctionary(string name, GameObject gameObject) {
         UIList.Add(name, gameObject);
     }
+
     public GameObject GetDirctionary(string name) {
         return UIList[name];
     }
 
     public void SettingOnOFf() {
         UIList["Setting"].SetActive(!UIList["Setting"].gameObject.activeSelf);
+    }
+
+    public void Loading(float per)
+    {
+        if (inkSlider == null)
+        {
+            inkSlider = UIList["Slider"].GetComponent<Slider>();
+        }
+        inkSlider.value = per;
     }
 
     public void AddChange() {

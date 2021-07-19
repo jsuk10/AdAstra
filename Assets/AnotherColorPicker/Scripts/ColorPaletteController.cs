@@ -89,6 +89,7 @@ public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHan
         UpdateMaterialInitialValues();
         UpdateMaterial();
         UpdateColor();
+        GameManager.Instance.SetDirctionary(this.gameObject.name, this.gameObject);
     }
     void UpdateMaterialInitialValues()
     {

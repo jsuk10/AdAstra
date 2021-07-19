@@ -7,8 +7,9 @@ public class SoundManager : UnitySingleton<SoundManager>
 {
     [SerializeField] private AudioSource backGroundSound;
     [SerializeField] private AudioMixer audioMixer;
-    private AudioClip[] clipFiles;
+    [SerializeField] private AudioClip[] clipFiles;
     private Dictionary<string, AudioClip> audioClipDirctionary;
+    GameObject sound;
 
     public override void OnCreated()
     {
@@ -17,6 +18,8 @@ public class SoundManager : UnitySingleton<SoundManager>
     public override void OnInitiate()
     {
         GetSoundsFromResources();
+        PlayBackGroundSound(1);
+
     }
 
 
@@ -38,8 +41,9 @@ public class SoundManager : UnitySingleton<SoundManager>
     /// 배경음악의 사운드를 조절해 주는 함수
     /// </summary>
     /// <param name="val"></param>
-    public void BackGroundSound(float val) {
-        audioMixer.SetFloat("BackGround",Mathf.Log10(val) * 20);
+    public void BackGroundSound(float val)
+    {
+        audioMixer.SetFloat("BackGround", Mathf.Log10(val) * 20);
     }
 
     /// <summary>
@@ -56,7 +60,8 @@ public class SoundManager : UnitySingleton<SoundManager>
     /// 파일은 Resources/Sound/FX에 있어야 됨.
     /// </summary>
     /// <param name="soundName"></param>
-    public void SFXPlayer(string soundName) {
+    public void SFXPlayer(string soundName)
+    {
         GameObject sound = new GameObject(soundName + "Sound");
         AudioSource audiosource = sound.AddComponent<AudioSource>();
         AudioClip clip = audioClipDirctionary[soundName];
@@ -67,12 +72,22 @@ public class SoundManager : UnitySingleton<SoundManager>
         Destroy(sound, clip.length);
     }
 
+
     /// <summary>
     /// 배경음악을 재생해주는 함수
     /// 게임 시작전에 0 게임 시작시 1
     /// </summary>
-    public void PlayBackGroundSound(int index) {
-        AudioClip clip = audioClipDirctionary[$"BackGound{index}"];
+    public void PlayBackGroundSound(int index)
+    {
+        if (backGroundSound == null)
+        {
+            sound = Instantiate(new GameObject("sound"));
+            backGroundSound = sound.AddComponent<AudioSource>();
+            DontDestroyOnLoad(sound);
+        }
+        backGroundSound.Stop();
+
+        AudioClip clip = audioClipDirctionary[$"BackGround{index}"];
         backGroundSound.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BackGround")[0];
         backGroundSound.clip = clip;
         backGroundSound.loop = true;
