@@ -297,6 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 268240573}
   - component: {fileID: 268240572}
+  - component: {fileID: 268240574}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -325,6 +326,7 @@ MonoBehaviour:
   maxInk: 30
   useInk: 0
   usedInk: 0
+  PV: {fileID: 268240574}
 --- !u!4 &268240573
 Transform:
   m_ObjectHideFlags: 0

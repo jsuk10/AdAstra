@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6575380541653132545
 Transform:
   m_ObjectHideFlags: 0
@@ -76,4 +76,5 @@ MonoBehaviour:
   linePointsMinDistance: 0.2
   lineWidth: 0.2
   palette: {fileID: 0}
+  LineDraw: {fileID: 6575380541653132544}
   PV: {fileID: 0}

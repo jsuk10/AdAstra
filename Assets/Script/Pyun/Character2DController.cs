@@ -35,12 +35,14 @@ public class Character2DController : MonoBehaviour
                 LineDraw.SetActive(true);
                 UIManager.Instance.GetDirctionary("palette").SetActive(true);
                 UIManager.Instance.GetDirctionary("InkSlider").SetActive(true);
+                GameManager.Instance.GetDirctionary("LineDrowing").SetActive(true);
             }
             else{
                 Debug.Log("Not Shamen");
                 LineDraw.SetActive(false);
                 UIManager.Instance.GetDirctionary("palette").SetActive(false);
                 UIManager.Instance.GetDirctionary("InkSlider").SetActive(false);
+                GameManager.Instance.GetDirctionary("LineDrowing").SetActive(false);
             }
         }
         
