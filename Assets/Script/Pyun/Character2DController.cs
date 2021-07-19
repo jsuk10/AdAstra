@@ -8,6 +8,7 @@ public class Character2DController : MonoBehaviour
 {
     public float maxSpeed = 1;
     public float jumpForce = 1;
+    public Text nickNameText;
 
     private Rigidbody2D _rigidbody;
     private SpriteRenderer spriteRenderer;
@@ -22,6 +23,8 @@ public class Character2DController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
+        nickNameText.text = view.IsMine ? PhotonNetwork.NickName : view.Owner.NickName;
+        nickNameText.color = view.IsMine ? Color.green : Color.white;
     }
 
     void Update()
@@ -97,8 +100,10 @@ public class Character2DController : MonoBehaviour
             }
 
             //Direction Sprite
-            if (Input.GetButtonDown("Horizontal"))
-                spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            // if (Input.GetButtonDown("Horizontal"))
+            //     spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            float axis = Input.GetAxisRaw("Horizontal");
+            if(axis != 0) view.RPC("FlipXRPC", RpcTarget.AllBuffered, axis);
 
             //Animation
             if (Mathf.Abs(_rigidbody.velocity.x) < 0.3)
@@ -107,16 +112,24 @@ public class Character2DController : MonoBehaviour
                 anim.SetBool("isWalking", true);
         }
     }
+
+    [PunRPC]
+    void FlipXRPC(float axis)
+    {
+        spriteRenderer.flipX = axis == -1;
+    }
         
-    // private void OnCollisionEnter(Collision other) {
-    //     if(other.tag == "Finish"){
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     if(other.gameObject.tag == "Finish"){
     //         canExit = true;
+    //         Debug.Log("canExit = true");
     //     }
     // }
 
-    // private void OnCollisionExit(Collision other) {
-    //     if(other.tag == "Finish"){
+    // private void OnCollisionExit2D(Collision2D other) {
+    //     if(other.gameObject.tag == "Finish"){
     //         canExit = false;
+    //         Debug.Log("canExit = false");
     //     }
     // }
 

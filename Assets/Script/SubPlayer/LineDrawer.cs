@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
-public class LineDrawer : MonoBehaviour
+public class LineDrawer : MonoBehaviourPun
 {
     public GameObject linePrefab;
     [Space(30f)]
@@ -14,7 +15,7 @@ public class LineDrawer : MonoBehaviour
     private Line currentrLine;
     [SerializeField] private ColorPaletteController palette;
     
-
+    public PhotonView PV;
 
     private void Start()
     {
@@ -35,20 +36,31 @@ public class LineDrawer : MonoBehaviour
 
     void BeginDraw()
     {
-        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(+5.19f, 0, 0);
-        if (mousePosition.x < -5.5 && mousePosition.y < -5.5f)
+        if(Input.mousePosition.x < 300f && Input.mousePosition.y < 300f )
             return;
-        currentrLine = Instantiate(linePrefab, this.transform).GetComponent<Line>();
-        currentrLine.UsePhysice(false);
-        currentrLine.SetLineColor(palette.SelectedColor);
-        currentrLine.SetPointsDistance(linePointsMinDistance);
-        currentrLine.SetLineWidth(lineWidth);
+        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        // currentrLine = PhotonNetwork.Instantiate(linePrefab.name, this.transform.position, Quaternion.identity).GetComponent<Line>();
+        GameObject obj = PhotonNetwork.Instantiate(linePrefab.name, this.transform.position, Quaternion.identity);
+        currentrLine = obj.GetComponent<Line>();
+        PV = obj.GetComponent<PhotonView>();
+        PV.RPC("UsePhysice", RpcTarget.All, false);
+        float r = palette.SelectedColor.r;
+        float g = palette.SelectedColor.g;
+        float b = palette.SelectedColor.b;
+        PV.RPC("SetLineColor", RpcTarget.All, r, g, b);
+        PV.RPC("SetPointsDistance", RpcTarget.All, linePointsMinDistance);
+        PV.RPC("SetLineWidth", RpcTarget.All, lineWidth);
+        // currentrLine.UsePhysice(false);
+        // currentrLine.SetLineColor(palette.SelectedColor);
+        // currentrLine.SetPointsDistance(linePointsMinDistance);
+        // currentrLine.SetLineWidth(lineWidth);
 
     } 
     void Draw()
     {
-        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(+5.19f, 0,0);
-        currentrLine.AddPoint(mousePosition);
+        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        PV.RPC("AddPoint", RpcTarget.All, mousePosition);
+        // currentrLine.AddPoint(mousePosition);
     }
     void EndDraw()
     {
@@ -59,8 +71,10 @@ public class LineDrawer : MonoBehaviour
                 Destroy(currentrLine.gameObject);
             }
             else {
-                currentrLine.UsePhysice(true);
-                currentrLine.SetMass();
+                // currentrLine.UsePhysice(true);
+                // currentrLine.SetMass();
+                PV.RPC("UsePhysice", RpcTarget.All, true);
+                PV.RPC("SetMass", RpcTarget.All);
                 currentrLine = null;
             }
         }
