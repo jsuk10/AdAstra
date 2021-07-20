@@ -152,7 +152,7 @@ public class Character2DController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy"){
             Debug.Log("플레이어가 맞았습니다!");
-            GameManager.Instance.ReLoadScene();
+            GameManager.Instance.reloadAllPlayer();
         }
     }
 
