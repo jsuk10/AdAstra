@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: -5379966782024720298}
   - component: {fileID: -4585724904869130397}
   - component: {fileID: 4311138007280661443}
+  - component: {fileID: 3187919860186458249}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Player
@@ -383,6 +384,14 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!81 &3187919860186458249
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6306178052444465276}
+  m_Enabled: 1
 --- !u!1 &6630554922179961758
 GameObject:
   m_ObjectHideFlags: 0

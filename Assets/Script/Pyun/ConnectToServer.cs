@@ -11,6 +11,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.PlayBackGroundSound(1);
         PhotonNetwork.ConnectUsingSettings();
         StartCoroutine(Translate());
 

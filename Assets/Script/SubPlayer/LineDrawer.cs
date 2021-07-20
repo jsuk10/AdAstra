@@ -10,6 +10,7 @@ public class LineDrawer : MonoBehaviourPun
     public float linePointsMinDistance;
     public float lineWidth;
     [SerializeField] private Texture2D cursorImg;
+    private AudioSource sound;
 
     private Camera cam;
 
@@ -52,6 +53,7 @@ public class LineDrawer : MonoBehaviourPun
         PV.RPC("SetLineColor", RpcTarget.All, r, g, b);
         PV.RPC("SetPointsDistance", RpcTarget.All, linePointsMinDistance);
         PV.RPC("SetLineWidth", RpcTarget.All, lineWidth);
+        SoundManager.Instance.PlayDrawingSound();
         // currentrLine.UsePhysice(false);
         // currentrLine.SetLineColor(palette.SelectedColor);
         // currentrLine.SetPointsDistance(linePointsMinDistance);
@@ -71,6 +73,7 @@ public class LineDrawer : MonoBehaviourPun
     }
     void EndDraw()
     {
+        SoundManager.Instance.StopDrawingSound();
         if (currentrLine != null) {
             if (currentrLine.PointsCount < 2)
             {
@@ -89,6 +92,8 @@ public class LineDrawer : MonoBehaviourPun
                 currentrLine = null;
             }
         }
+        //sound.Stop();
+        
     }
     public void SetCursor()
     {

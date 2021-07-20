@@ -106,6 +106,7 @@ public class Line : MonoBehaviourPun
         if (collision.gameObject.layer == 6 && !isShake)
         {
             isShake = true;
+            SoundManager.Instance.SFXPlayer("Drop");
             CameraController.Instance.ShakeCamera(rigidbody2D.mass* rigidbody2D.velocity.y, 2f);
         }
         if (collision.gameObject.layer == 8)
