@@ -43,4 +43,9 @@ public class UIManager : UnitySingleton<UIManager>
         //}
     }
 
+    public void ResetDictionary()
+    {
+        UIList = new Dictionary<string, GameObject>();
+    }
+
 }

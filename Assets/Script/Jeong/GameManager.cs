@@ -115,6 +115,8 @@ public class GameManager : UnitySingleton<GameManager>
             playerCount = 0;
             voteCount = 0;
             playerNickList = new HashSet<string>();
+            dirctionary = new Dictionary<string, GameObject>();
+            UIManager.Instance.ResetDictionary();
             SceneManager.LoadScene(sceneNames[++stageIndex]);
         };
     }
