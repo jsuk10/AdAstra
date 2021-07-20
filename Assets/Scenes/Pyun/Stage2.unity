@@ -1078,7 +1078,7 @@ GameObject:
   - component: {fileID: 514585465}
   - component: {fileID: 514585464}
   - component: {fileID: 514585463}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: spikes
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1822,7 +1822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6193974613853044160, guid: 662a3e7e0b956494d9939b1e3443b196, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6193974613853044160, guid: 662a3e7e0b956494d9939b1e3443b196, type: 3}
       propertyPath: m_TagString
@@ -96105,7 +96105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6193974613853044160, guid: 662a3e7e0b956494d9939b1e3443b196, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6193974613853044160, guid: 662a3e7e0b956494d9939b1e3443b196, type: 3}
       propertyPath: m_TagString

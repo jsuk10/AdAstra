@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7353680346366049411}
   - component: {fileID: 1194721147551419814}
   - component: {fileID: 1924991001243620828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PushBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
