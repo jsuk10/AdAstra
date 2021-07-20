@@ -89,6 +89,11 @@ public class GameManager : UnitySingleton<GameManager>
     /// 신을 다시 연다
     /// </summary>
     public void ReLoadScene() {
+        playerCount = 0;
+        voteCount = 0;
+        playerNickList = new HashSet<string>();
+        dirctionary = new Dictionary<string, GameObject>();
+        UIManager.Instance.ResetDictionary();
         SceneManager.LoadScene(sceneNames[stageIndex]);
     }
 
