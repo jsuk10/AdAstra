@@ -75,6 +75,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   linePointsMinDistance: 0.2
   lineWidth: 0.2
+  cursorImg: {fileID: 2800000, guid: bb1dfe90c60dd4de1bcaa95c9f7ed274, type: 3}
   palette: {fileID: 0}
   LineDraw: {fileID: 6575380541653132544}
   PV: {fileID: 0}
