@@ -122,7 +122,7 @@ public class GameManager : UnitySingleton<GameManager>
             playerNickList = new HashSet<string>();
             dirctionary = new Dictionary<string, GameObject>();
             UIManager.Instance.ResetDictionary();
-            SceneManager.LoadScene(sceneNames[stageIndex++]);
+            SceneManager.LoadScene(sceneNames[++stageIndex]);
         };
     }
 

@@ -154,12 +154,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNames:
-  - Stage2
+  - ElonScene
   - Stage1
+  - Stage2
   - Stage3
   playerList: []
   voteRate: 0.3
-  maxInk: 30
+  maxInk: 100
   useInk: 0
   usedInk: 0
   PV: {fileID: 268240574}
