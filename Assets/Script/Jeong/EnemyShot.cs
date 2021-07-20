@@ -16,17 +16,13 @@ public class EnemyShot : MonoBehaviour
     [SerializeField]
     private float builletInterver;
 
-    [SerializeField]
-    private CapsuleCollider2D capsuleCollider;
-
+    [SerializeField]private GameObject gun;
     private Vector3 bulletPosition;
 
 
     private void Start()
     {
-        if (capsuleCollider == null)
-            capsuleCollider = GetComponent<CapsuleCollider2D>();
-        bulletPosition = new Vector3((float)capsuleCollider.size.x + 0.5f, (float)capsuleCollider.size.y/2, 0f);
+        bulletPosition = gun.transform.position;
 
         //for (int i = 0; i < shotParticle.Length; i++)
         //    shotParticle[i].Stop();
@@ -43,7 +39,7 @@ public class EnemyShot : MonoBehaviour
         {
             bulletPosition.x = -bulletPosition.x;
         }
-        Instantiate(bulletPrefabs, this.transform.position + bulletPosition, this.transform.rotation);
+        Instantiate(bulletPrefabs, bulletPosition, this.transform.rotation);
 
     }
 }

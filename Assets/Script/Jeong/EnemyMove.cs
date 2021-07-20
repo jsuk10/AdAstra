@@ -17,6 +17,10 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     private float force = 1;
 
+
+    bool isTurn = true;
+    Vector3 dirction;
+
     private Rigidbody2D rb;
 
     private int targetIndex = 1;
@@ -34,10 +38,10 @@ public class EnemyMove : MonoBehaviour
     {
         if (wayPoints.Length > 0)
             this.transform.position = wayPoints[tempStartIndex].gameObject.transform.position;
-        StartCoroutine(Translate());
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
-
+        dirction = new Vector3(1, 0, 0);
+        StartCoroutine(Translate());
     }
 
     /// <summary>
@@ -57,24 +61,20 @@ public class EnemyMove : MonoBehaviour
     virtual protected IEnumerator Translate()
     {
 
-        FlipSize();
-        Vector3 dirction = new Vector3();
+        dirction = new Vector3(1,0,0);
 
-        yield return new WaitForSeconds(Random.Range(0f, 1f));
         while (true)
         {
-            if (this.transform.position.x > wayPoints[1].transform.position.x)
+            if (this.transform.position.x > wayPoints[1].transform.position.x && isTurn)
             {
                 FlipSize();
-                dirction.x = -1;
             }
-            else if(this.transform.position.x < wayPoints[0].transform.position.x)
+            else if(this.transform.position.x < wayPoints[0].transform.position.x && !isTurn)
             {
                 FlipSize();
-                dirction.x = +1;
             }
 
-            rb.AddForce(dirction * force);
+            rb.velocity = (dirction * force);
             yield return null;
 
         }
@@ -85,6 +85,8 @@ public class EnemyMove : MonoBehaviour
     /// </summary>
     public void FlipSize()
     {
+        isTurn = !isTurn;
+        dirction = -dirction;
         Vector3 Scale = this.transform.localScale;
         Scale.x = -Scale.x;
         this.transform.localScale = Scale;
