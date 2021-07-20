@@ -116,6 +116,7 @@ public class GameManager : UnitySingleton<GameManager>
     public void EnterPlayer(string nickName) {
         playerNickList.Add(nickName);
         if(PhotonNetwork.CurrentRoom.Players.Count == playerNickList.Count) {
+            this.GetDirctionary("Rocket").GetComponent<Rocket>().RocketFire();
             playerCount = 0;
             voteCount = 0;
             playerNickList = new HashSet<string>();

@@ -10,8 +10,11 @@ public class Rocket : MonoBehaviour
     {
         if (isLanding)
         {
+            GameManager.Instance.SetDirctionary("RocketLanding", this.gameObject);
             CameraController.Instance.ChangeCameraTarget(this.transform);
             animator.Play("RockLanding");
+        } else{
+            GameManager.Instance.SetDirctionary("Rocket", this.gameObject);
         }
         if (animator == null)
             GetComponent<Animator>();
@@ -19,11 +22,11 @@ public class Rocket : MonoBehaviour
 
     public void RocketFire() {
         CameraController.Instance.ShakeCamera(3f, 1f);
-        animator.Play("Fire");
+        animator.Play("RocketFire");
     }
 
     public void AfterLanding() {
-        Debug.Log("Landing");
+        Debug.Log("RockLanding");
         CameraController.Instance.ShakeCamera(3f,1f);
     }
 }
