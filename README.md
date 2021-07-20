@@ -2,6 +2,9 @@
 
 ![image](https://user-images.githubusercontent.com/42465137/126362503-6e0aafb6-499f-4f29-a660-13e04c5f039c.png)
 
+[Ios Download](https://drive.google.com/drive/folders/1LR-rJob-T_q08wHoD8Ji0HpkNFNmdCOT?usp=sharing).
+
+[Window Download](https://drive.google.com/file/d/1KMgX9B4GZDNkjCYQXM3H7LRkypo3-AfQ/view?usp=sharing).
 
 AdMartis는 멀티플레이 퍼즐 및 어드벤쳐 게임으로, 그림을 그려 물체를 만드는 Drawer와 Drawer의 도움을 받아 장애물과 몬스터를 피해 계속하여 도전하는 Adventurer가 협동하여 스테이지를 클리어합니다.
 Drawer의 통찰력과 Adventurer의 순발력을 최대한 활용해야 하며 가장 중요한 것은 서로간의 협동과 소통입니다. 
