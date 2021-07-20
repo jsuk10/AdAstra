@@ -17,9 +17,19 @@ public class Rocket : MonoBehaviour
             GetComponent<Animator>();
     }
 
+    /// <summary>
+    /// ?? ?? ??
+    /// </summary>
     public void RocketFire() {
         CameraController.Instance.ShakeCamera(3f, 1f);
         animator.Play("Fire");
+    }
+
+    /// <summary>
+    /// ??? ?? ??? ?? ??
+    /// </summary>
+    public void AfterFire() {
+        Debug.Log("After Fire");
     }
 
     public void AfterLanding() {
