@@ -61,15 +61,7 @@ public class Character2DController : MonoBehaviour
         }
         if(view.IsMine) //내 케릭터인지 체크
         {
-            //Move Speed - 가로 방향으로 버튼 누르면 힘 주어 가속도 증가
-            float h = Input.GetAxisRaw("Horizontal");
-            _rigidbody.AddForce(Vector2.right*h, ForceMode2D.Impulse);
-
-            //Max Speed - 속도를 maxSpeed 만큼 제어
-            if(_rigidbody.velocity.x > maxSpeed)
-                _rigidbody.velocity = new Vector2(maxSpeed, _rigidbody.velocity.y);
-            else if(_rigidbody.velocity.x < maxSpeed*(-1))
-                _rigidbody.velocity = new Vector2(maxSpeed*(-1), _rigidbody.velocity.y);
+            
 
 
             //Stop Speed - 가로 방향 버튼 때면 속도 급감 - 마찰력 때문에 멈추게 됨
@@ -104,9 +96,12 @@ public class Character2DController : MonoBehaviour
                 }
 
             }
+            //Move Speed - 가로 방향으로 버튼 누르면 힘 주어 가속도 증가
+            float h = Input.GetAxisRaw("Horizontal");
 
             //Turn off Addforce when against wall - 벽에 닿으면 Addforce를 없애기
-            if (_rigidbody.velocity.x < 1f){
+            if (_rigidbody.velocity.x < 1f)
+            {
 
                 Debug.DrawRay(_rigidbody.position, Vector3.right, new Color(0, 1, 0));
                 Debug.DrawRay(_rigidbody.position, Vector3.left, new Color(0, 1, 0));
@@ -114,20 +109,22 @@ public class Character2DController : MonoBehaviour
                 RaycastHit2D rayHit_left = Physics2D.Raycast(_rigidbody.position, Vector3.left, 1, LayerMask.GetMask("Platform"));
                 RaycastHit2D rayHit_right = Physics2D.Raycast(_rigidbody.position, Vector3.right, 1, LayerMask.GetMask("Platform"));
 
-                if(rayHit_left.collider != null){
-                    if (h < 0){
-                        Debug.Log("against wall");
-                        _rigidbody.AddForce(Vector2.right*(-1 * h), ForceMode2D.Impulse);
-                    }
-                }
+                if (rayHit_left.collider != null)
+                    if(h < 0)
+                    h = 0;
 
-                if(rayHit_right.collider != null){
-                    if (h > 0){
-                        Debug.Log("against wall");
-                        _rigidbody.AddForce(Vector2.right*(-1 * h), ForceMode2D.Impulse);
-                    }
-                }
+                if (rayHit_right.collider != null)
+                    if(h > 0)
+                    h = 0;
             }
+            _rigidbody.AddForce(Vector2.right * h, ForceMode2D.Impulse);
+            //Max Speed - 속도를 maxSpeed 만큼 제어
+            if (_rigidbody.velocity.x > maxSpeed)
+                _rigidbody.velocity = new Vector2(maxSpeed, _rigidbody.velocity.y);
+            else if (_rigidbody.velocity.x < maxSpeed * (-1))
+                _rigidbody.velocity = new Vector2(maxSpeed * (-1), _rigidbody.velocity.y);
+
+            
 
             //Direction Sprite
             // if (Input.GetButtonDown("Horizontal"))
