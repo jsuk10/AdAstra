@@ -217,7 +217,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   builletInterver: 3
-  capsuleCollider: {fileID: 0}
+  gun: {fileID: 887742721693279600}
 --- !u!70 &1530218896969097720
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
