@@ -107,7 +107,7 @@ public class Line : MonoBehaviourPun
         {
             isShake = true;
             SoundManager.Instance.SFXPlayer("Drop");
-            CameraController.Instance.ShakeCamera(rigidbody2D.mass* rigidbody2D.velocity.y, 2f);
+            CameraController.Instance.ShakeCamera(rigidbody2D.mass* rigidbody2D.velocity.y, 1f);
         }
         if (collision.gameObject.layer == 8)
         {

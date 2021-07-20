@@ -3897,7 +3897,7 @@ MonoBehaviour:
   ani: {fileID: 9123041852107422401}
   BackGoundAnimator: {fileID: 0}
   virtualCamera: {fileID: 9123041852422910822}
-  correctionValue: 2
+  correctionValue: 4
 --- !u!4 &9123041854123757851
 Transform:
   m_ObjectHideFlags: 0
