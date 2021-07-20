@@ -85,6 +85,7 @@ public class ChatAndToGame : MonoBehaviourPunCallbacks
 
     public void clickToGame()
     {
+        SoundManager.Instance.PlayBackGroundSound(2);
         PV.RPC("GameRPC", RpcTarget.All);
     }
 }

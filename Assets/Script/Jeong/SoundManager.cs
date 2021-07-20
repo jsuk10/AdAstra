@@ -7,6 +7,7 @@ public class SoundManager : UnitySingleton<SoundManager>
 {
     [SerializeField] private AudioSource backGroundSound;
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioSource pancleSound;
     private AudioClip[] clipFiles;
     private Dictionary<string, AudioClip> audioClipDirctionary;
 
@@ -30,6 +31,7 @@ public class SoundManager : UnitySingleton<SoundManager>
         audioClipDirctionary = new Dictionary<string, AudioClip>();
         for (int i = 0; i < clipFiles.Length; i++)
         {
+            Debug.Log(clipFiles[i].name);
             audioClipDirctionary.Add(clipFiles[i].name, clipFiles[i]);
         }
     }
@@ -63,8 +65,20 @@ public class SoundManager : UnitySingleton<SoundManager>
 
         audiosource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("SFX")[0];
         audiosource.clip = clip;
-
+        audiosource.Play();
         Destroy(sound, clip.length);
+    }
+
+    public void PlayDrawingSound()
+    {
+        pancleSound.mute = false;
+        pancleSound.outputAudioMixerGroup = audioMixer.FindMatchingGroups("SFX")[0];
+
+    }
+
+    public void StopDrawingSound()
+    {
+        pancleSound.mute = true;
     }
 
     /// <summary>
@@ -72,7 +86,8 @@ public class SoundManager : UnitySingleton<SoundManager>
     /// 게임 시작전에 0 게임 시작시 1
     /// </summary>
     public void PlayBackGroundSound(int index) {
-        AudioClip clip = audioClipDirctionary[$"BackGound{index}"];
+        Debug.Log($"BackGround{index}");
+        AudioClip clip = audioClipDirctionary[$"BackGround{index}"];
         backGroundSound.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BackGround")[0];
         backGroundSound.clip = clip;
         backGroundSound.loop = true;
