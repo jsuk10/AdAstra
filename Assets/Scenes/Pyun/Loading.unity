@@ -160,7 +160,7 @@ MonoBehaviour:
   - Stage3
   playerList: []
   voteRate: 0.3
-  maxInk: 100
+  maxInk: 300
   useInk: 0
   usedInk: 0
   PV: {fileID: 268240574}
