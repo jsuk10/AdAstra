@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] private float distoryTime;
     [SerializeField] private float speed;
+    [SerializeField] private bool isCanon;
     private Coroutine translate;
 
     void Start()
@@ -15,9 +17,11 @@ public class EnemyBullet : MonoBehaviour
     }
 
 
-    void Destroy() {
+    void Destroy()
+    {
         StopCoroutine(translate);
-        Destroy(this.gameObject);
+        if (this.gameObject != null)
+            Destroy(this.gameObject);
     }
 
     virtual protected IEnumerator Translate()
@@ -26,7 +30,20 @@ public class EnemyBullet : MonoBehaviour
         {
             this.transform.Translate(-Vector3.left * speed * Time.deltaTime);
             yield return null;
-
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isCanon)
+        {
+            if (collision.gameObject.tag == "Line")
+            {
+                PhotonNetwork.Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.tag == "Player")
+                return;
+        }
+        Destroy();
     }
 }

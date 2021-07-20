@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1530218896677923253}
   m_Layer: 0
-  m_Name: ShotMonster
+  m_Name: CannonMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfebe6999029741caa432e65b344cebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefabs: {fileID: 8225655064275434691, guid: f88255092b9f347d1bbe399eade7e78c, type: 3}
+  bulletPrefabs: {fileID: 8225655064275434691, guid: 3ff271ee048f64009ab16e9696388aa8, type: 3}
   shotParticle:
   - {fileID: 0}
   - {fileID: 0}
