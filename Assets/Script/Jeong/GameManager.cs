@@ -109,7 +109,6 @@ public class GameManager : UnitySingleton<GameManager>
     /// </summary>
     [PunRPC]
     public void EnterPlayer(string nickName) {
-        playerCount++;
         playerNickList.Add(nickName);
         if(PhotonNetwork.CurrentRoom.Players.Count == playerNickList.Count) {
             playerCount = 0;
@@ -117,12 +116,11 @@ public class GameManager : UnitySingleton<GameManager>
             playerNickList = new HashSet<string>();
             dirctionary = new Dictionary<string, GameObject>();
             UIManager.Instance.ResetDictionary();
-            SceneManager.LoadScene(sceneNames[++stageIndex]);
+            SceneManager.LoadScene(sceneNames[stageIndex++]);
         };
     }
 
     public void toAllEnterPlayer(string nickName) {
-        Debug.Log("Called");
         PV.RPC("EnterPlayer", RpcTarget.All, nickName);
     }
 
