@@ -38,6 +38,7 @@ public class Character2DController : MonoBehaviour
                 UIManager.Instance.GetDirctionary("palette").SetActive(true);
                 UIManager.Instance.GetDirctionary("InkSlider").SetActive(true);
                 GameManager.Instance.GetDirctionary("LineDrowing").SetActive(true);
+                GameManager.Instance.GetDirctionary("LineDrowing").GetComponent<LineDrawer>().SetCursor();
             }
             else{
                 Debug.Log("Not Shamen");
@@ -151,7 +152,7 @@ public class Character2DController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy"){
             Debug.Log("플레이어가 맞았습니다!");
-            //GameManager.Instance.ReLoadScene();
+            GameManager.Instance.ReLoadScene();
         }
     }
 

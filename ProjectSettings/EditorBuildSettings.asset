@@ -18,11 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Pyun/InnerRoom.unity
     guid: fecaa624a87ad2547814db7b77962995
   - enabled: 1
+    path: Assets/Scenes/Pyun/ElonScene.unity
+    guid: 437a50c64f7e3df4693cf513c073e72c
+  - enabled: 1
     path: Assets/Scenes/Pyun/PyunScene.unity
     guid: 1074c1781bc353f4cb1be05e92900824
   - enabled: 1
-    path: Assets/Scenes/Stage1.unity
-    guid: 5f47602152c3d8744bb7291619751a18
+    path: Assets/Scenes/Pyun/Stage1.unity
+    guid: a603a525d71a332478c09478af5f9e66
   - enabled: 1
     path: Assets/Scenes/Pyun/Stage2.unity
     guid: 1a80a7c68ca0d2a4dae5f30f7c0c04a6

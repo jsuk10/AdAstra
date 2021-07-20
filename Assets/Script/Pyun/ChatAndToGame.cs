@@ -80,7 +80,7 @@ public class ChatAndToGame : MonoBehaviourPunCallbacks
     [PunRPC]
     void GameRPC()
     {
-        PhotonNetwork.LoadLevel("PyunScene");
+        PhotonNetwork.LoadLevel("ElonScene");
     }
 
     public void clickToGame()
