@@ -46,7 +46,6 @@ public class CameraController : UnitySingleton<CameraController>
     /// <param name="time"></param>
     public void ShakeCamera(float intensity, float time)
     {
-        Debug.Log("Shake");
         StartCoroutine(IShakeCamera(intensity/ correctionValue, time));
     }
 

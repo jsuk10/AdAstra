@@ -2966,6 +2966,10 @@ PrefabInstance:
       propertyPath: m_ChildCameras.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9123041853797710158, guid: 092454d3c44db41538abb162b17087ab, type: 3}
+      propertyPath: correctionValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9123041854138871112, guid: 092454d3c44db41538abb162b17087ab, type: 3}
       propertyPath: m_RootOrder
       value: 2
