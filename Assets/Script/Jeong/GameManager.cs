@@ -88,6 +88,7 @@ public class GameManager : UnitySingleton<GameManager>
     /// <summary>
     /// 신을 다시 연다
     /// </summary>
+    [PunRPC]
     public void ReLoadScene() {
         playerCount = 0;
         voteCount = 0;
@@ -95,6 +96,10 @@ public class GameManager : UnitySingleton<GameManager>
         dirctionary = new Dictionary<string, GameObject>();
         UIManager.Instance.ResetDictionary();
         SceneManager.LoadScene(sceneNames[stageIndex]);
+    }
+
+    public void reloadAllPlayer(){
+        PV.RPC("ReLoadScene", RpcTarget.All);
     }
 
 
@@ -122,7 +127,7 @@ public class GameManager : UnitySingleton<GameManager>
             playerNickList = new HashSet<string>();
             dirctionary = new Dictionary<string, GameObject>();
             UIManager.Instance.ResetDictionary();
-            SceneManager.LoadScene(sceneNames[stageIndex++]);
+            SceneManager.LoadScene(sceneNames[++stageIndex]);
         };
     }
 
