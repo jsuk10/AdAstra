@@ -114,3 +114,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distoryTime: 5
   speed: 3
+  isCanon: 0
