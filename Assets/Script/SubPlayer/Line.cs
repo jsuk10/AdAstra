@@ -16,6 +16,7 @@ public class Line : MonoBehaviourPun
 
     private float pointsMinDistance = 0.1f;
     private float circleColliderRadius;
+    public bool isShake = false;
 
     public PhotonView photonView;
 
@@ -98,6 +99,19 @@ public class Line : MonoBehaviourPun
         lineRenderer.endWidth = width;
         circleColliderRadius = width / 2f;
         edgeCollider2D.edgeRadius = width / 2f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6 && !isShake)
+        {
+            isShake = true;
+            CameraController.Instance.ShakeCamera(rigidbody2D.mass* rigidbody2D.velocity.y, 2f);
+        }
+        if (collision.gameObject.layer == 8)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
 }
