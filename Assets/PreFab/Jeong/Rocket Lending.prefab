@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8994359286522329402}
-  isLanding: 0
+  isLanding: 1
 --- !u!95 &8994359286522329402
 Animator:
   serializedVersion: 3
