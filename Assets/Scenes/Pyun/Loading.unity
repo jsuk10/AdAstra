@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNames:
-  - Stage1
   - Stage2
+  - Stage1
   - Stage3
   playerList: []
   voteRate: 0.3
@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1788878924a59274fbc13b7b2508b557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lodingTime: 3
 --- !u!4 &666700810
 Transform:
   m_ObjectHideFlags: 0

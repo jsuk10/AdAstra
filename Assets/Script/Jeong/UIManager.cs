@@ -46,4 +46,9 @@ public class UIManager : UnitySingleton<UIManager>
         inkSlider.value = per;
     }
 
+    public void ResetDictionary()
+    {
+        UIList = new Dictionary<string, GameObject>();
+    }
+
 }

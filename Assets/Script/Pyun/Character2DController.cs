@@ -54,7 +54,9 @@ public class Character2DController : MonoBehaviour
     {
         if(GameManager.Instance.playerNickList.Contains(view.Owner.NickName)){
             view.gameObject.SetActive(false);
-            GameManager.Instance.GetDirctionary("LineDrowing").SetActive(false);
+            if(view.IsMine){
+                GameManager.Instance.GetDirctionary("LineDrowing").SetActive(false);
+            }
         }
         if(view.IsMine) //내 케릭터인지 체크
         {
@@ -151,17 +153,16 @@ public class Character2DController : MonoBehaviour
     {
         spriteRenderer.flipX = axis == -1;
     }
-        
-    private void OnCollisionEnter2D(Collision2D other) {
+
+    private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Finish" && view.IsMine){
             canExit = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
+    private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "Finish" && view.IsMine){
             canExit = false;
         }
     }
-
 }
