@@ -7,6 +7,7 @@ using System.Collections;
 public class CameraController : UnitySingleton<CameraController>
 {
     [SerializeField] private Animator ani;
+    [SerializeField] private Animator BackGoundAnimator;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private float correctionValue = 3f;
 
@@ -16,17 +17,8 @@ public class CameraController : UnitySingleton<CameraController>
             virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
-    [ContextMenu("Tracking Player")]
-    public void ChangeCameraPlayer()
-    {
-        ani.Play("TrackingPlayer");
-    }
-
-    [ContextMenu("Drowing")]
-    public void ChangeCameraDrowing()
-    {
-        ani.Play("Drowing");
-
+    public void ChangeCameraBackGround(String backGroundName) {
+        BackGoundAnimator.Play(backGroundName);
     }
 
 
