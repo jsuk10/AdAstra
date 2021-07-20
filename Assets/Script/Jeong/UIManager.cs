@@ -35,12 +35,15 @@ public class UIManager : UnitySingleton<UIManager>
             inkSlider = UIList["InkSlider"].GetComponent<Slider>();
         }
         inkSlider.value = 1- ((GameManager.Instance.usedInk + GameManager.Instance.useInk) / GameManager.Instance.MaxInk);
+    }
 
-        //if (inkSlider.onValueChanged == null)
-        //{
-        //    inkSlider.onValueChanged.AddListener( (float value )=> {
-        //    });
-        //}
+    public void Loading(float per)
+    {
+        if (inkSlider == null)
+        {
+            inkSlider = UIList["Slider"].GetComponent<Slider>();
+        }
+        inkSlider.value = per;
     }
 
 }
