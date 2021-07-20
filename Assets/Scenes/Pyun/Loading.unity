@@ -158,6 +158,7 @@ MonoBehaviour:
   - Stage1
   - Stage2
   - Stage3
+  - ClosingScene
   playerList: []
   voteRate: 0.3
   maxInk: 300
