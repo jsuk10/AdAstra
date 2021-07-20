@@ -23,7 +23,6 @@ public class EnemyShot : MonoBehaviour
     private void Start()
     {
         bulletPosition = gun.transform.position;
-
         //for (int i = 0; i < shotParticle.Length; i++)
         //    shotParticle[i].Stop();
         InvokeRepeating("CreateBullet", builletInterver, builletInterver);
@@ -35,10 +34,6 @@ public class EnemyShot : MonoBehaviour
         //shotParticle[i].Play();
         //Instantiate(bulletPrefabs, shotParticle[0].gameObject.transform.position, transform.rotation);
 
-        if (this.transform.rotation.y != 0)
-        {
-            bulletPosition.x = -bulletPosition.x;
-        }
         Instantiate(bulletPrefabs, bulletPosition, this.transform.rotation);
 
     }

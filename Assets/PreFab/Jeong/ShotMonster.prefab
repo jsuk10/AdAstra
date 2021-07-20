@@ -217,7 +217,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   builletInterver: 3
-  capsuleCollider: {fileID: 0}
+  gun: {fileID: 887742721693279600}
 --- !u!70 &1530218896969097720
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.055369027}
-  m_Size: {x: 2, y: 3.1342375}
+  m_Size: {x: 2, y: 2.36}
   m_Direction: 0
 --- !u!50 &1530218896969097703
 Rigidbody2D:
